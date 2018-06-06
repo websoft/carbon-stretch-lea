@@ -90,5 +90,15 @@ ENV TERM xterm
 ENV npm_config_loglevel warn
 # allow installing when the main user is root
 ENV npm_config_unsafe_perm true
-# global npm installs
-RUN npm i -g cypress
+
+RUN adduser node root
+RUN mkdir /home/node/client
+RUN mkdir /home/node/server
+WORKDIR /home/node/server
+RUN chown -R node:root /home/node
+RUN chmod -R 775 /home/node
+
+# Openshift does not run containers as root, use our new user.
+USER node
+
+RUN npm i cypress
