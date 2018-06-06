@@ -101,4 +101,4 @@ RUN chmod -R 775 /home/node
 # Openshift does not run containers as root, use our new user.
 USER node
 
-RUN npm i cypress
+RUN npm i cypress node-sass
