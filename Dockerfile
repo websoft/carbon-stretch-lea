@@ -54,6 +54,7 @@ ARG FIREFOX_VERSION=57.0.2
 USER root
 
 RUN node --version
+RUN npm i -g npm
 RUN echo "force new chrome here"
 
 # install Chromebrowser
